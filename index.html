@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Perfectlytimed</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="css/tipsy.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/camera_icon.ico">
+</head>
+<body>
+	<header>Welcome at perfectlytimed.com</header>
+	<div id="userpanel">
+		<h1>Welcome</h1>
+		<h1>Vincent Noben</h1>
+		<div id="useravatar"><img src="usericons/vincent_noben.png" alt="Avatar"></div>
+		<p>My profile</p>
+		<p>10 new likes</p>
+		<p>5 new comments</p>
+		<p>Log Out</p>
+		<br><br>
+		<div class="BigView">
+			<div id="bigbutton"></div>
+			<div id="smallbutton"></div>
+		</div>
+	</div>
+	<div id="content">
+		<ul id="picturelist">
+			<!-- Javascript input from view comes here -->
+		</ul>
+	</div>
+
+<!-- SCRIPTS START HERE -->
+	<script src="js/libs/jquery-1.10.2.min.js"></script>
+	<script src="js/libs/lightbox-2.6.min.js"></script>
+	<script src='js/libs/jquery.tipsy.js'></script>
+<!-- BACKBONE SCRIPTS START HERE -->
+	<script src="js/libs/underscore.js"></script>
+	<script src="js/libs/backbone.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#smallbutton").click(function(){
+				big_view = false;
+				console.log(big_view);
+				$(".picture").removeClass("picture").addClass("smallpicture");
+				$(".date").removeClass("date").addClass("smalldate");
+				$(".comments").removeClass("comments").addClass("smallcomments");
+				$(".BigView").removeClass("BigView").addClass("SmallView");
+				$(".title").removeClass("title").addClass("titlesmall");
+			});
+			$("#bigbutton").click(function(){
+				big_view = true;
+				console.log(big_view);
+				$(".smallpicture").removeClass("smallpicture").addClass("picture");
+				$(".smalldate").removeClass("smalldate").addClass("date");
+				$(".smallcomments").removeClass("smallcomments").addClass("comments");
+				$(".SmallView").removeClass("SmallView").addClass("BigView");
+				$(".titlesmall").removeClass("titlesmall").addClass("title");
+			});
+			$(function() {
+				$('a.titlesmall').tipsy({fade: true, gravity: 's'});
+			});
+		});
+	</script>
+</body>
+</html>
